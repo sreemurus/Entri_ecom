@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}E-Store- Shopping made easy.{% endblock %}
+{% block content %}
+
+
+
+<div class="container">
+    <br>
+    <div class="row">
+    <div class="col-12 col-md-12 col-lg-6 ">
+        <div style="min-min-width:18rem;">
+            <img src="{{product.image.url}}" alt="{{product.name}}"  style="height:35rem; width:35rem;">
+               </div>
+</div>
+        <div class="col-12 col-sm-12 col-lg-6">
+           <div>
+               <h3>{{product.name}}</h3>
+               <h3>{{product.price}}</h3>
+               <p>{{product.description}}</p>
+               {% if product.stock <= 0 %}
+               <p class="text-justify">Out 0f Stock</p>
+               {% else %}
+               <a class="btn btn-primary" href="#">Add to Cart</a>
+               <br>
+               <br>
+               {% endif %}
+        </div>
+</div>
+</div>
+    </div>
+
+{% endblock %}

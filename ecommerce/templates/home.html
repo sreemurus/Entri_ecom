@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}E-Store- Shopping made easy.{% endblock %}
+{% block content %}
+{% if category %}
+<div>
+  <div class="row">
+    <div class="mx-auto">
+      <p class="text-center"><a href="{{% url 'allproducts' %}">Our Products Category</a></p>
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="mx-auto">
+  {% if category %}
+  <img src="{{category.image.url}}" alt="{{category.name}}" style="width:100%;" height="600px;">
+</div>
+<br>
+<div>
+  <h1>{{category.name}}</h1>
+  <p>{{category.description}}</p>
+</div>
+{% else %}
+<div>
+    <img src="static/img/img_1.png" alt="wallpaper" style="width:1600px; height:600px;">
+  </div>
+<div>
+  <div>
+    <h1 style="text-align:center;">welcome to our store!!</h1>
+    <p style="text-align:center;">Selling only the best things online</p>
+  </div>
+</div>
+{% endif %}
+
+<div class="container">
+  <br>
+  <div class="row">
+    {% for product in products %}
+    <div class="col-9 col-sm-12 col-md-4">
+   <div class="card" style="width: 18rem;  margin-top: 20px; ">
+   <a href="{{product.get_url}}"><img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" style="height:18rem; width:100%;"></a>
+  <div class="card-body">
+    <h4>{{product.name}}</h4>
+    <p>{{product.price}}</p>
+  </div>
+</div>
+  </div>
+   {% endfor %}
+
+</div>
+</div>
+ {% endblock %}
+
+
+
